@@ -5,6 +5,8 @@ import matplotlib.image as mpimg
 from Semester26_Model import  predict_price
 
 def draw_the_map():
+    fargeTekst = "hotpink"
+    
     ax_map.cla()
     ax_map.imshow(img, extent=(0, 100, 0, 100), aspect='auto')
     x,y = marked_point
@@ -16,12 +18,17 @@ def draw_the_map():
     m2_price:float = predict_price(x, y, m2, house_type, standard_type) / m2
     price = f"{round(m2_price * 1000, -2):,.0f}"
 
+    if m2_price > 40:
+        fargeTekst = "blue"
+    if m2_price > 80:
+        fargeTekst = "orangered"
+
     m2list = [50,100,150,200]
     price_m2 = [predict_price(x, y,  _m2, house_type, standard_type)/_m2 for _m2 in m2list]
 
-    ax_map.text(x + 3, y - 1, price, color='blue', fontsize=15)
+    ax_map.text(x + 3, y - 1, price, color=fargeTekst, fontsize=15)
     ax_history.cla()
-    ax_history.bar(m2list, price_m2, color='blue', width=5)
+    ax_history.bar(m2list, price_m2, color=fargeTekst, width=5)
     ax_history.legend(["pris per m2"])
 
     plt.draw()
