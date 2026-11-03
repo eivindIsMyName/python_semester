@@ -1,6 +1,7 @@
 import math
 import pandas as pd
 import numpy as np
+from pathlib import Path
 
 
 
@@ -65,9 +66,15 @@ df = pd.DataFrame({
     "sales_price": sales_price
 })
 
-df.to_csv("House_Prices.csv", index=False, mode='a', header=False)
+file_path = Path("House_Prices.csv")
+
+if file_path.is_file():
+    df.to_csv("House_Prices.csv", index=False, mode='a', header=False)
+    print("CSV file 'House_Prices.csv' added rows successfully.")
+else:
+    df.to_csv("House_Prices.csv", index=False)
+    print("CSV file 'House_Prices.csv' created successfully.")
 
 # print(df.head())
-print("CSV file 'House_Prices.csv' created successfully.")
 print(f"Sentrum (leil, 100m2, god std) = {make_house_price(40, 58, 3, 3, 100):>10,.0f}") # Sentrum !
 print(f"Åsane (leil, 100m2, god std)   = {make_house_price(40, 78, 3, 3, 100):>10,.0f}") # Sentrum !
