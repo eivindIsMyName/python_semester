@@ -20,8 +20,10 @@ def draw_the_map():
 
     if m2_price > 40:
         fargeTekst = "blue"
-    if m2_price > 80:
+    if m2_price > 70:
         fargeTekst = "orangered"
+    if m2_price > 90:
+            fargeTekst = "red"
 
     m2list = [50,100,150,200]
     price_m2 = [predict_price(x, y,  _m2, house_type, standard_type)/_m2 for _m2 in m2list]
