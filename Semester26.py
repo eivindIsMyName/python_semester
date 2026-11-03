@@ -10,7 +10,7 @@ def draw_the_map():
     ax_map.cla()
     ax_map.imshow(img, extent=(0, 100, 0, 100), aspect='auto')
     x,y = marked_point
-    ax_map.scatter(x, y, marker='+', c='blue', s=200)
+    ax_map.scatter(x, y, marker='+', c='black', s=200)
     print(f"marked_point: {marked_point}")
     if marked_point == (0, 0):
         return
@@ -69,15 +69,15 @@ m2 = 100
 marked_point = (43,57)
 
 # Create the figures
-fig = plt.figure(figsize=(6.0, 6.0),facecolor='lightgray')  # type: ignore[arg-type]
+fig = plt.figure(figsize=(6.0, 6.0),facecolor='lavenderblush')  # type: ignore[arg-type]
 fig.suptitle("Hus priser Bergen (per m2)", fontsize=20, y=0.95)
 
 ax_map = fig.add_axes((0.4, 0.05, 0.50, .85))
 ax_radio_house_type = fig.add_axes((0.05, 0.75, 0.30, .15))
 ax_radio_standard = fig.add_axes((0.05, 0.57, 0.30, .15))
 ax_history = fig.add_axes((0.05, 0.05, 0.30, .50))
-ax_radio_house_type.set_facecolor('lightgray')
-ax_radio_standard.set_facecolor('lightgray')
+ax_radio_house_type.set_facecolor('snow')
+ax_radio_standard.set_facecolor('snow')
 
 radio_button_category = RadioButtons(ax_radio_house_type, list(house_types.keys()))
 radio_button_standard = RadioButtons(ax_radio_standard, list(standard_types.keys()))
