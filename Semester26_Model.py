@@ -28,8 +28,14 @@ def build_and_train_model():
     l_pred:list[int] = y_pred.tolist()
     for i in range(0, min(len(l_test),10)):
         print(f"Price: {l_test[i]:>10,.0f}  Predicted: {l_pred[i]:>10,.0f}")
+    
+    r2 = r2_score(y_test, y_pred)
+    mae = mean_absolute_error(y_test, y_pred)
+
     print(f"R-squared: {r2_score(y_test, y_pred):.2f}")
     print(f"MAE      : {mean_absolute_error(y_test, y_pred):.0f}")
+
+    return r2, mae
 
 def predict_price(x, y, m2:int,house_type, standard) -> float:
     # Build a single sample
@@ -49,3 +55,5 @@ poly = PolynomialFeatures(degree=p_degree)
 build_and_train_model()
 
 print(f"m2  {predict_price(100,100, 200,1, 1)}") # just test one..
+
+r2, mae = build_and_train_model()

@@ -2,7 +2,7 @@
 import matplotlib.pyplot as plt
 from matplotlib.widgets import RadioButtons
 import matplotlib.image as mpimg
-from Semester26_Model import  predict_price
+from Semester26_Model import  predict_price, r2, mae
 
 def draw_the_map():
     fargeTekst = "hotpink"
@@ -72,7 +72,9 @@ marked_point = (43,57)
 
 # Create the figures
 fig = plt.figure(figsize=(6.0, 6.0),facecolor='lavenderblush')  # type: ignore[arg-type]
-fig.suptitle("Hus priser Bergen (per m2)", fontsize=20, y=0.95)
+fig.suptitle(
+    f"Hus priser Bergen (per m2)\nR² = {r2:.2f} | MAE = {mae:.2f} kr", 
+    fontsize=16, y=0.99)
 
 ax_map = fig.add_axes((0.4, 0.05, 0.50, .85))
 ax_radio_house_type = fig.add_axes((0.05, 0.75, 0.30, .15))
